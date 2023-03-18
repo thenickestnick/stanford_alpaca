@@ -45,6 +45,7 @@ PROMPT_DICT = {
 
 @dataclass
 class ModelArguments:
+    tokenzier_name_or_path: Optional[str] = field()
     model_name_or_path: Optional[str] = field(default="facebook/opt-125m")
 
 
@@ -199,7 +200,7 @@ def train():
     )
 
     tokenizer = transformers.AutoTokenizer.from_pretrained(
-        model_args.model_name_or_path,
+        model_args.tokenzier_name_or_path,
         cache_dir=training_args.cache_dir,
         model_max_length=training_args.model_max_length,
         padding_side="right",
